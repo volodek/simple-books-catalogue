@@ -1,5 +1,7 @@
+import { Book } from "./Book.js";
+
 // a model for accessing the search of openlibrary api
-class Catalogue {
+export class Catalogue {
   constructor() {
     this.base_url = "https://openlibrary.org";
     // to show only first 20 books as the most relevant result
@@ -13,7 +15,9 @@ class Catalogue {
     if (!response.ok) { throw new Error(`Error: ${response.status}`) };
 
     let data = await response.json();
-    let books = data.docs;
+    let books = data.docs.map(
+      doc => { return new Book(doc.title, doc.author_name, doc.first_publish_year, doc.cover_i); }
+    );
     return books;
   }
 }
