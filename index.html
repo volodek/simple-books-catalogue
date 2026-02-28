@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Simple books catalogue</title>
     <link href="style.css" rel="stylesheet" type="text/css">
+    <script src="main.js" type="module"></script>
   </head>
 
   <body>
@@ -20,6 +21,13 @@
       <div class="search-section">
         <input id="search-input" type="text" placeholder="Search for books by title or author...">
         <button id="search-button">Search</button>
+      </div>
+    </div>
+
+    <div id="search-results">
+      <div class="status-area">
+        <div id="loader" class="hidden">Loading...</div>
+        <div id="error-container" class="hidden"></div>
       </div>
     </div>
   </body>
