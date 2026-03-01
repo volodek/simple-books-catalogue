@@ -1,4 +1,4 @@
-import { Catalogue } from "./models/Catalogue.js";
+import { BookAPI } from "./models/BookAPI.js";
 import { FavoritesSection } from "./components/FavoritesSection.js";
 import { CatalogueSection } from "./components/CatalogueSection.js";
 import { UIManager } from "./services/UIManager.js";
@@ -6,7 +6,6 @@ import { UIManager } from "./services/UIManager.js";
 export class App {
   constructor() {
     this.ui = new UIManager();
-    this.searchModel = new Catalogue();
 
     this.favoritesSection = new FavoritesSection("favorites", (removedBookId) => {
       this.favoritesSection.render();
@@ -37,11 +36,11 @@ export class App {
     this.catalogueSection.clear();
 
     try {
-      const books = await this.searchModel.findBooks(keywords);
+      const books = await BookAPI.findBooks(keywords);
       this.catalogueSection.render(books);
     } catch (error) {
       console.error("Search failed: ", error);
-      this.ui.showError("Something went wrong, check your network connection and try again later");
+      this.ui.showError("Something went wrong, check your network connection and try again later.");
     } finally {
       this.ui.hideLoader();
     }
