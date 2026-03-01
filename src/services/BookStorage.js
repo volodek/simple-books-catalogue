@@ -1,4 +1,4 @@
-export class Library {
+export class BookStorage {
   static #STORAGE_KEY = "library";
 
   static books = JSON.parse(localStorage.getItem(this.#STORAGE_KEY)) || [];

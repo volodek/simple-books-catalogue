@@ -1,4 +1,4 @@
-import { Library } from "../models/Library.js";
+import { BookStorage } from "../services/BookStorage.js";
 
 export class FavBookCard {
   constructor(book, onLibraryChange) {
@@ -26,7 +26,7 @@ export class FavBookCard {
     const btn = div.querySelector('.remove-fav-btn');
     btn.addEventListener('click', () => {
       const idToDelete = this.book.id;
-      Library.remove(this.book);
+      BookStorage.remove(this.book);
       this.onLibraryChange(idToDelete);
     });
 

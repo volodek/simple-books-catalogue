@@ -1,4 +1,4 @@
-import { Library } from "../models/Library.js";
+import { BookStorage } from "../services/BookStorage.js";
 
 export class BookCard {
   constructor(book, onLibraryChange) {
@@ -11,7 +11,7 @@ export class BookCard {
     div.classList.add("catalogue-book-card");
     div.dataset.bookId = this.book.id;
 
-    const isFavorite = Library.has(this.book);
+    const isFavorite = BookStorage.has(this.book);
 
     div.innerHTML = `
       <button class="fav-btn ${isFavorite ? 'active' : ''}">
@@ -33,11 +33,11 @@ export class BookCard {
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
 
-      if (Library.has(this.book)) {
-        Library.remove(this.book);
+      if (BookStorage.has(this.book)) {
+        BookStorage.remove(this.book);
         btn.classList.remove('active');
       } else {
-        Library.add(this.book);
+        BookStorage.add(this.book);
         btn.classList.add('active');
       }
 

@@ -1,5 +1,5 @@
 import { FavBookCard } from "./FavBookCard.js";
-import { Library } from "../models/Library.js";
+import { BookStorage } from "../services/BookStorage.js";
 
 export class FavoritesSection {
   constructor(containerId, onLibraryChange) {
@@ -12,7 +12,7 @@ export class FavoritesSection {
     this.container.innerHTML = '';
     if (title) this.container.appendChild(title);
 
-    if (Library.isEmpty) {
+    if (BookStorage.isEmpty) {
       const emptyMsg = document.createElement('p');
       emptyMsg.textContent = "No favorites yet";
       emptyMsg.classList.add('empty-fav-msg');
@@ -20,7 +20,7 @@ export class FavoritesSection {
       return;
     }
 
-    const books = Library.allBooks;
+    const books = BookStorage.allBooks;
 
     books.forEach(book => {
       const favCard = new FavBookCard(book, (removedId) => {

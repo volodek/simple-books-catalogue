@@ -1,4 +1,4 @@
-import { BookAPI } from "./models/BookAPI.js";
+import { BookAPI } from "./services/BookAPI.js";
 import { FavoritesSection } from "./components/FavoritesSection.js";
 import { CatalogueSection } from "./components/CatalogueSection.js";
 import { UIManager } from "./services/UIManager.js";

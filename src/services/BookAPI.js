@@ -1,4 +1,4 @@
-import { Book } from "./Book.js";
+import { Book } from "../models/Book.js";
 
 export class BookAPI {
   // to show only first 10 books as the most relevant result
