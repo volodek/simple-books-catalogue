@@ -1,7 +1,7 @@
 import { Book } from "./Book.js";
 
 // a model for accessing the search of openlibrary api
-export class BookProvider {
+export class Catalogue {
   constructor() {
     this.base_url = "https://openlibrary.org";
     // to show only first 20 books as the most relevant result
