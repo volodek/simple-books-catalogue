@@ -1,4 +1,5 @@
 import { Catalogue } from "./models/Catalogue.js";
+import { BookCard } from "./components/BookCard.js";
 
 export class App {
   constructor() {
@@ -71,24 +72,8 @@ export class App {
 
     console.log(books);
     books.forEach(book => {
-      const bookElement = this.createBookElement(book);
-      this.searchResults.appendChild(bookElement);
+      const bookCard = new BookCard(book);
+      this.searchResults.appendChild(bookCard.render());
     });
-  }
-
-  createBookElement(book) {
-    const div = document.createElement('div');
-    div.classList.add("catalogue-book-card");
-
-    div.innerHTML = `
-      <img src="${book.cover_url}" alt="${book.title}">
-      <div class="book-card-info">
-        <h3 title="${book.title}">${book.title}</h3>
-        <p>${book.author_name}</p>
-        <span>${book.first_publish_year}</span>
-      </div>
-    `;
-
-    return div;
   }
 }
