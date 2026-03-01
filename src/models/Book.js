@@ -1,5 +1,6 @@
 export class Book {
-  constructor(title, author_name, first_publish_year, cover_i) {
+  constructor(key, title, author_name, first_publish_year, cover_i) {
+    this.id = key;
     this.title = title;
     this.author_name = author_name.join(", ");
     this.first_publish_year = first_publish_year;
