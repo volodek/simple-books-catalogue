@@ -13,7 +13,7 @@ export class Library {
 
   remove(book) {
     const initialLength = this.books.length;
-    this.books = this.books.filter(item => item.key !== book.key);
+    this.books = this.books.filter(item => item.id !== book.id);
     if (this.books.length == initialLength) { return false };
 
     this._save();
@@ -21,7 +21,7 @@ export class Library {
   }
 
   has(book) {
-    return this.books.some(item => item.key === book.key);
+    return this.books.some(item => item.id === book.id);
   }
 
   get allBooks() {

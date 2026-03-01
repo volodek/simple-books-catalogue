@@ -6,7 +6,7 @@ export class Catalogue {
     this.base_url = "https://openlibrary.org";
     // to show only first 20 books as the most relevant result
     this.page = 1;
-    this.limit = 20;
+    this.limit = 10;
   }
 
   async findBooks(keywords) {

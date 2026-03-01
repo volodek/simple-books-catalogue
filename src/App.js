@@ -1,13 +1,28 @@
 import { Catalogue } from "./models/Catalogue.js";
+import { Library } from "./models/Library.js";
 import { BookCard } from "./components/BookCard.js";
+import { CatalogueSection } from "./components/CatalogueSection.js";
+import { FavoritesSection } from "./components/FavoritesSection.js";
 
 export class App {
   constructor() {
-    this.catalogue = new Catalogue();
+    this.searchModel = new Catalogue();
+    this.library = new Library();
+    this.favoritesSection = new FavoritesSection("favorites", this.library, (removedBookId) => {
+      this.favoritesSection.render();
+
+      this.catalogueSection.updateHeartState(removedBookId, false);
+    });
+
+
+    this.catalogueSection = new CatalogueSection(
+      "search-results",
+      this.library,
+      () => { this.favoritesSection.render(); }
+    );
 
     this.searchInput = document.getElementById("search-input");
     this.searchButton = document.getElementById("search-button");
-    this.searchResults = document.getElementById("search-results");
 
     this.loader = document.getElementById("loader");
     this.errorContainer = document.getElementById("error-container");
@@ -17,6 +32,7 @@ export class App {
 
   init() {
     this.searchButton.addEventListener('click', () => this.handleSearch());
+    this.favoritesSection.render();
   }
 
   async handleSearch() {
@@ -26,8 +42,8 @@ export class App {
     this.prepareForSearch();
 
     try {
-      const books = await this.catalogue.findBooks(keywords);
-      this.renderBooks(books);
+      const books = await this.searchModel.findBooks(keywords);
+      this.catalogueSection.render(books);
     } catch (error) {
       console.error("Search failed: ", error);
       this.showErrorMessage(`Something went wrong, check your network connection and try again later`);
@@ -39,8 +55,7 @@ export class App {
   prepareForSearch() {
     this.clearError();
 
-    const cards = this.searchResults.querySelectorAll('.catalogue-book-card');
-    cards.forEach(card => card.remove());
+    this.catalogueSection.clear();
 
     this.showLoader();
   }
@@ -62,18 +77,5 @@ export class App {
   clearError() {
     this.errorContainer.classList.add('hidden');
     this.errorContainer.textContent = '';
-  }
-
-  renderBooks(books) {
-    if (!books || books.length === 0) {
-      this.showErrorMessage("Nothing was found");
-      return;
-    }
-
-    console.log(books);
-    books.forEach(book => {
-      const bookCard = new BookCard(book);
-      this.searchResults.appendChild(bookCard.render());
-    });
   }
 }
