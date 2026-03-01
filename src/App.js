@@ -1,5 +1,4 @@
 import { Catalogue } from "./models/Catalogue.js";
-import { Library } from "./models/Library.js";
 import { FavoritesSection } from "./components/FavoritesSection.js";
 import { CatalogueSection } from "./components/CatalogueSection.js";
 import { UIManager } from "./services/UIManager.js";
@@ -8,16 +7,14 @@ export class App {
   constructor() {
     this.ui = new UIManager();
     this.searchModel = new Catalogue();
-    this.library = new Library();
 
-    this.favoritesSection = new FavoritesSection("favorites", this.library, (removedBookId) => {
+    this.favoritesSection = new FavoritesSection("favorites", (removedBookId) => {
       this.favoritesSection.render();
       this.catalogueSection.updateHeartState(removedBookId, false);
     });
 
     this.catalogueSection = new CatalogueSection(
       "search-results",
-      this.library,
       () => { this.favoritesSection.render(); }
     );
 

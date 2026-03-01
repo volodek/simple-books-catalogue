@@ -1,9 +1,8 @@
 import { BookCard } from "./BookCard.js";
 
 export class CatalogueSection {
-  constructor(containerId, library, onLibraryChange) {
+  constructor(containerId, onLibraryChange) {
     this.container = document.getElementById(containerId);
-    this.library = library;
     this.onLibraryChange = onLibraryChange;
   }
 
@@ -14,7 +13,7 @@ export class CatalogueSection {
     if (!books || books.length === 0) return;
 
     books.forEach(book => {
-      const bookCard = new BookCard(book, this.library, this.onLibraryChange);
+      const bookCard = new BookCard(book, this.onLibraryChange);
       this.container.appendChild(bookCard.render());
     });
   }

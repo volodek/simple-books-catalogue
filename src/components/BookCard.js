@@ -1,7 +1,8 @@
+import { Library } from "../models/Library.js";
+
 export class BookCard {
-  constructor(book, library, onLibraryChange) {
+  constructor(book, onLibraryChange) {
     this.book = book;
-    this.library = library;
     this.onLibraryChange = onLibraryChange;
   }
 
@@ -10,7 +11,7 @@ export class BookCard {
     div.classList.add("catalogue-book-card");
     div.dataset.bookId = this.book.id;
 
-    const isFavorite = this.library.has(this.book);
+    const isFavorite = Library.has(this.book);
 
     div.innerHTML = `
       <button class="fav-btn ${isFavorite ? 'active' : ''}">
@@ -32,11 +33,11 @@ export class BookCard {
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
 
-      if (this.library.has(this.book)) {
-        this.library.remove(this.book);
+      if (Library.has(this.book)) {
+        Library.remove(this.book);
         btn.classList.remove('active');
       } else {
-        this.library.add(this.book);
+        Library.add(this.book);
         btn.classList.add('active');
       }
 

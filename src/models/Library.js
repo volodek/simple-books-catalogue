@@ -1,9 +1,9 @@
 export class Library {
-  constructor() {
-    this.books = JSON.parse(localStorage.getItem("library")) || [];
-  }
+  static #STORAGE_KEY = "library";
 
-  add(book) {
+  static books = JSON.parse(localStorage.getItem(this.#STORAGE_KEY)) || [];
+
+  static add(book) {
     if (this.has(book)) { return false };
 
     this.books.push(book);
@@ -11,7 +11,7 @@ export class Library {
     return true;
   }
 
-  remove(book) {
+  static remove(book) {
     const initialLength = this.books.length;
     this.books = this.books.filter(item => item.id !== book.id);
     if (this.books.length == initialLength) { return false };
@@ -20,19 +20,19 @@ export class Library {
     return true;
   }
 
-  has(book) {
+  static has(book) {
     return this.books.some(item => item.id === book.id);
   }
 
-  get allBooks() {
+  static get allBooks() {
     return this.books;
   }
 
-  get isEmpty() {
+  static get isEmpty() {
     return this.books.length === 0;
   }
 
-  _save() {
-    localStorage.setItem("library", JSON.stringify(this.books));
+  static _save() {
+    localStorage.setItem(this.#STORAGE_KEY, JSON.stringify(this.books));
   }
 }
