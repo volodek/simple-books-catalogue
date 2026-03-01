@@ -1,2 +1,4 @@
 import './style.css';
-import './main.js';
+import { App } from "./App.js";
+
+new App();
