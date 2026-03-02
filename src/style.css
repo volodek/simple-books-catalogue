@@ -19,6 +19,17 @@
   --favorite: #eaf0ed;
 }
 
+[data-theme="dark"] {
+  --white: #1e1e1e;
+  --background: #12100e;
+  --card: #1a1816;
+  --secondary: #2a2622;
+  --title: #f7f4ef;
+  --text: #c4b8a8;
+  --border: #383129;
+  --favorite: #1a221f;
+}
+
 body {
   background-color: var(--background);
   font-family: 'Source Sans 3', sans-serif;
@@ -32,6 +43,14 @@ h1, h2, h3 {
 
 h1, h2 {
   font-family: 'Playfair Display', sans-serif;
+}
+
+input::placeholder {
+  color: var(--text);
+}
+
+input {
+  color: var(--title);
 }
 
 .hero-section {
@@ -227,6 +246,9 @@ h1, h2 {
 }
 
 header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 10px 40px 10px 40px;
   background-color: var(--background);
   border-bottom: 1px solid var(--border);
@@ -238,6 +260,21 @@ header h1 {
   font-weight: 700;
   margin: 0;
   color: var(--title);
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--title);
+  padding: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.theme-toggle svg {
+  width: 24px;
+  height: 24px;
 }
 
 footer {
@@ -314,6 +351,11 @@ footer a {
   }
 
   header {
-    display: none;
+    padding: 15px 20px;
+  }
+
+  .theme-toggle svg {
+    width: 20px;
+    height: 20px;
   }
 }
