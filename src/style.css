@@ -260,6 +260,23 @@ footer a {
   color: #3b82f6;
 }
 
+.fav-filter-input {
+  width: 100%;
+  padding: 8px 12px;
+  margin-bottom: 15px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background-color: var(--white);
+  font-family: inherit;
+  font-size: 14px;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.fav-filter-input:focus {
+  border-color: var(--green);
+}
+
 @media (max-width: 768px) {
   #main-content {
     flex-direction: column;
