@@ -85,7 +85,7 @@ h1, h2 {
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
-  justify-content: flex-end;
+  justify-content: flex-start;
   padding: 20px 0;
 }
 
@@ -136,7 +136,7 @@ h1, h2 {
 
 #main-content {
   display: flex;
-  max-width: 1400px;
+  max-width: 1280px;
   margin: 0 auto;
   gap: 30px;
   padding: 20px;
@@ -225,7 +225,39 @@ h1, h2 {
   opacity: 0.5;
 }
 
-.remove-fav-btn:hover {
-  opacity: 1;
-  color: var(--red);
+@media (max-width: 768px) {
+  #main-content {
+    flex-direction: column;
+    padding: 10px;
+    gap: 20px;
+  }
+
+  #search-results {
+    flex: none;
+    width: 100%;
+    justify-content: center;
+  }
+
+  #favorites {
+    flex: none;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .search-section {
+    padding: 0 15px;
+  }
+
+  .catalogue-book-card {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .book-card-info h3 {
+    font-size: 14px;
+  }
+
+  .title-section h1 {
+    padding: 0 10px;
+  }
 }
