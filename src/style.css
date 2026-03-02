@@ -314,6 +314,10 @@ footer a {
   border-color: var(--green);
 }
 
+#scroll-to-fav {
+  display: none;
+}
+
 @media (max-width: 768px) {
   #main-content {
     flex-direction: column;
@@ -357,5 +361,33 @@ footer a {
   .theme-toggle svg {
     width: 20px;
     height: 20px;
+  }
+
+  #scroll-to-fav {
+    display: flex;
+    position: fixed;
+    bottom: 25px;
+    left: 20px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: var(--green);
+    border: none;
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  #scroll-to-fav svg path {
+    stroke: var(--white);
+    fill: var(--white);
+  }
+
+  #scroll-to-fav.hidden {
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.5) translateY(20px);
   }
 }

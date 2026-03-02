@@ -3,6 +3,7 @@ import { FavoritesSection } from "./components/FavoritesSection.js";
 import { CatalogueSection } from "./components/CatalogueSection.js";
 import { UIManager } from "./helpers/UIManager.js";
 import { ThemeHelper } from "./helpers/ThemeHelper.js";
+import { ScrollToFavHelper } from "./helpers/ScrollToFavHelper.js";
 
 export class App {
   constructor() {
@@ -26,6 +27,7 @@ export class App {
 
   init() {
     ThemeHelper.init();
+    ScrollToFavHelper.init();
     this.searchInput.addEventListener('input', () => this.handleSearch());
     this.searchButton.addEventListener('click', () => this.handleSearch());
     this.favoritesSection.render();
