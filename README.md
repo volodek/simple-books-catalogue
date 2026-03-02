@@ -29,3 +29,10 @@ To run the build:
 ```bash
 npx serve dist
 ```
+
+## The description of the directories in `src/`
+* `components` - UI components
+* `helpers` - UI helpers
+* `icons` - SVG icons
+* `models` - Domain entities
+* `services` - Interfaces of external services
