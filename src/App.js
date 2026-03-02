@@ -37,6 +37,11 @@ export class App {
 
     try {
       const books = await BookAPI.findBooks(keywords);
+      if (books.length == 0) {
+        this.ui.showError("No books found.");
+        return;
+      }
+
       this.catalogueSection.render(books);
     } catch (error) {
       console.error("Search failed: ", error);
