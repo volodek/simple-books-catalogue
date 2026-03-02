@@ -1,7 +1,7 @@
 import { BookAPI } from "./services/BookAPI.js";
 import { FavoritesSection } from "./components/FavoritesSection.js";
 import { CatalogueSection } from "./components/CatalogueSection.js";
-import { UIManager } from "./services/UIManager.js";
+import { UIManager } from "./helpers/UIManager.js";
 
 export class App {
   constructor() {
