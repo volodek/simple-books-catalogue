@@ -24,13 +24,24 @@ export class App {
   }
 
   init() {
+    this.searchInput.addEventListener('input', () => this.handleSearch());
     this.searchButton.addEventListener('click', () => this.handleSearch());
     this.favoritesSection.render();
   }
 
   async handleSearch() {
     const keywords = this.searchInput.value.trim();
-    if (!keywords) return;
+    if (!keywords) {
+      this.catalogueSection.clear();
+      this.ui.clearError();
+      return;
+    }
+
+    if (keywords.length < 3) {
+      this.catalogueSection.clear();
+      this.ui.showError("Enter at least three characters.");
+      return;
+    }
 
     this.ui.prepareUI();
     this.catalogueSection.clear();
