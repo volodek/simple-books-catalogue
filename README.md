@@ -36,3 +36,7 @@ npx serve dist
 * `icons` - SVG icons
 * `models` - Domain entities
 * `services` - Interfaces of external services
+
+## Live preview
+
+https://volodek.github.io/simple-books-catalogue/
